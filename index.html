@@ -1,175 +1,408 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GZH 个人作品集｜机械设计、机器人研发、结构仿真与 AI 产品">
-  <meta name="theme-color" content="#f6f7fb">
-  <title>GZH | 个人简历与项目作品集</title>
+  <meta name="theme-color" content="#09151c">
+  <meta name="description" content="郭子豪 GZH｜机械工程、机器人研发、结构仿真与 AI 应用的个人简历和项目作品集。">
+  <meta property="og:title" content="郭子豪 · GZH | 机械工程 × 机器人 × AI">
+  <meta property="og:description" content="从机械结构设计到多机器人协同与智能应用，查看项目案例及四种求职方向。">
+  <title>郭子豪 · GZH | 机器人研发与工程作品集</title>
   <style>
-    :root { --ink:#182b46; --muted:#627185; --brand:#2859aa; --accent:#e2a365; --line:#e4e9f0; --bg:#f6f7fb; --paper:#fff; --shadow:0 16px 40px rgba(32,52,85,.06); }
+    /* ==============================================================
+       GZH 个人求职作品集 - 单文件版，CSS/JavaScript 均内置，无依赖
+       建议先到文末搜索 SITE_DATA 修改个人内容，再调整下方配色。
+       ============================================================== */
+    :root { color-scheme: dark; --bg:#09151c; --bg2:#101f29; --surface:#132732; --surface2:#172d38; --line:rgba(193,228,232,.13); --line2:rgba(193,228,232,.2); --ink:#eff7f6; --sub:#9ab5bc; --dim:#6c8992; --accent:#b6f4cd; --cyan:#7bd8dc; --orange:#ffca96; --heading:clamp(2rem,5vw,4.35rem); --radius:19px; --max:1160px; }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink)}
+    html{scroll-behavior:smooth;scroll-padding-top:94px}
+    body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.75 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 650px 540px at 84% -7%,rgba(36,129,139,.14),transparent 75%),linear-gradient(180deg,#09151c,#0b1921 55%,#09151c)}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.32;pointer-events:none;background-image:linear-gradient(to right,rgba(133,202,205,.032) 1px,transparent 1px),linear-gradient(to bottom,rgba(133,202,205,.032) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
+    button,a{font:inherit}
     a{color:inherit;text-decoration:none}
-    a:focus-visible,button:focus-visible{outline:3px solid #6a9aff;outline-offset:3px}
-    .wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
-    header{background:rgba(246,247,251,.94);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:18px}
-    .logo{font-weight:900;letter-spacing:.1em;font-size:22px;color:#153763}
-    .logo span{color:var(--accent)}
-    nav{display:flex;gap:28px;color:#41506a;font-size:14px}
-    nav a:hover{color:var(--brand)}
-    .toplink{font-size:14px;font-weight:700;padding:8px 14px;background:#e9effa;border-radius:8px;color:var(--brand)}
-    main{padding-bottom:80px}
-    .hero{display:grid;grid-template-columns:1.4fr .9fr;gap:55px;align-items:center;padding:92px 0 65px}
-    .eyebrow{display:inline-block;color:var(--brand);font-weight:750;letter-spacing:.09em;font-size:12px;text-transform:uppercase;margin-bottom:14px}
-    h1{font-size:clamp(40px,5.8vw,70px);line-height:1.12;letter-spacing:-.045em;margin:0 0 23px;font-weight:840}
-    h1 em{font-style:normal;color:var(--brand)}
-    .lead{max-width:620px;color:#52627a;font-size:18px;line-height:1.95}
-    .pills{display:flex;flex-wrap:wrap;gap:9px;margin:23px 0 30px}
-    .pill{font-size:13px;background:white;border:1px solid var(--line);padding:6px 12px;border-radius:100px;color:#4e6077}
-    .actions{display:flex;flex-wrap:wrap;gap:12px}
-    .btn{display:inline-block;padding:12px 23px;background:var(--brand);border:1px solid var(--brand);color:white;border-radius:10px;font-weight:700;font-size:14px}
-    .btn.secondary{background:transparent;color:var(--brand)}
-    .portrait{background:linear-gradient(150deg,#142d51,#1b467b);border-radius:24px;min-height:365px;padding:32px;position:relative;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;color:white}
-    .portrait:after{content:"";width:270px;height:270px;position:absolute;right:-100px;top:-115px;border-radius:50%;border:55px solid rgba(255,255,255,.07)}
-    .portrait .mini{color:#a7c9e9;font-size:12px;font-weight:700;letter-spacing:.2em}
-    .portrait strong{font-size:76px;line-height:1;letter-spacing:-.08em}
-    .portrait p{margin:14px 0 0;color:#c7d9ed;max-width:280px;font-size:15px}
-    .stats{border-top:1px solid #557296;padding-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px;font-size:12px;color:#b9cfe8}
-    .stats b{display:block;color:white;font-size:17px;letter-spacing:-.02em}
-    section{scroll-margin-top:90px}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:36px 0 22px}
-    h2{font-size:30px;letter-spacing:-.035em;margin:0}
-    .section-head p{margin:0;font-size:14px;color:var(--muted)}
-    .view{background:white;border:1px solid var(--line);padding:30px;border-radius:18px;box-shadow:var(--shadow)}
-    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:27px}
-    .tab{font-family:inherit;cursor:pointer;border:1px solid #dde5ef;color:#556780;background:#f8fafc;padding:11px 18px;border-radius:9px;font-weight:700;font-size:14px;transition:.2s}
-    .tab:hover{border-color:#a0bce7}
-    .tab[aria-selected="true"]{background:var(--brand);color:white;border-color:var(--brand)}
-    .view-body{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
-    .view-body h3{font-size:24px;margin:0 0 10px}
-    .view-body p{color:var(--muted);margin:0 0 13px}
-    .view-body ul{margin:0;padding-left:19px;color:#475771}
-    .view-body li{margin:6px 0}
-    .aside{border-left:1px solid var(--line);padding-left:28px}
-    .kicker{font-size:12px;letter-spacing:.08em;color:var(--brand);font-weight:800;margin:0 0 9px}
-    .chips{display:flex;flex-wrap:wrap;gap:9px}
-    .chip{background:#edf3fc;color:#28518a;padding:7px 12px;border-radius:7px;font-size:13px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{border:1px solid var(--line);background:white;border-radius:16px;padding:26px;box-shadow:var(--shadow);transition:transform .15s}
-    .card:hover{transform:translateY(-3px)}
-    .card .id{font-weight:800;color:#a8b7cd;font-size:12px;letter-spacing:.12em}
-    .card h3{font-size:20px;line-height:1.4;margin:16px 0 12px}
-    .card p{font-size:14px;color:var(--muted);margin:0 0 20px}
-    .card .tags{font-size:12px;font-weight:700;color:#3c69a5}
-    .about{border:1px solid var(--line);background:var(--paper);padding:30px;border-radius:16px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
-    .about h3{font-size:20px;margin:0 0 11px}
-    .about p{color:var(--muted);margin:0}
-    .about a{font-weight:800;color:var(--brand);text-decoration:underline;text-underline-offset:4px}
-    .notice{color:#697991;font-size:13px;border-left:3px solid var(--accent);padding-left:12px;margin-top:18px}
-    footer{border-top:1px solid var(--line);padding:30px 0 50px;color:#8896a9;font-size:13px}
-    footer .wrap{display:flex;justify-content:space-between;gap:15px}
-    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:30px;padding-top:54px}.portrait{min-height:260px}.cards{grid-template-columns:1fr 1fr}.view-body{grid-template-columns:1fr;gap:20px}.aside{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}}
-    @media(max-width:580px){.wrap{width:min(100% - 28px,1120px)}.nav{min-height:64px}.toplink{display:none}nav{gap:12px;font-size:12px}.hero{padding:44px 0 40px}h1{font-size:42px}.lead{font-size:16px}.portrait strong{font-size:61px}.view{padding:18px}.tab{flex:1 1 45%;padding:10px 7px}.cards,.about{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:6px}.card{padding:22px}footer .wrap{display:block}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+    button{cursor:pointer}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    a:focus-visible,button:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+    .container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+    .skip{position:fixed;top:-80px;left:16px;z-index:100;padding:8px 15px;background:var(--accent);color:#09151c;border-radius:10px}
+    .skip:focus{top:10px}
+    .site-header{z-index:30;position:sticky;top:0;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(8,20,26,.89);backdrop-filter:blur(17px)}
+    .header-inner{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{font-size:23px;font-weight:900;letter-spacing:-.07em;white-space:nowrap}
+    .brand b{color:var(--accent);font-weight:900}
+    .main-nav{display:flex;align-items:center;gap:clamp(10px,2.3vw,32px)}
+    .main-nav a{color:#9fb2b8;font-size:13px;font-weight:650;white-space:nowrap;transition:color .2s}
+    .main-nav a:hover,.main-nav a.active{color:var(--accent)}
+    .header-action{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border:1px solid var(--line2);border-radius:999px;font-size:12px;font-weight:750;color:var(--ink);white-space:nowrap}
+    .header-action:hover{border-color:var(--accent);color:var(--accent)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;min-height:628px;padding:83px 0 86px}
+    .eyebrow,.section-kicker{font-size:12px;letter-spacing:.19em;font-weight:850;color:var(--accent);text-transform:uppercase}
+    .eyebrow:before,.section-kicker:before{content:"";display:inline-block;width:22px;height:1px;background:currentColor;margin-right:11px;vertical-align:middle;transform:translateY(-2px)}
+    .hero h1{font-size:clamp(44px,5.6vw,78px);letter-spacing:-.064em;line-height:1.14;margin:22px 0 22px;font-weight:850}
+    .hero h1 em{font-style:normal;background:linear-gradient(94deg,#b6f4cd,#76d2dc);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .hero-lead{font-size:17px;line-height:1.95;color:#abc2c8;max-width:575px;margin:0 0 27px}
+    .hero-keywords{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 33px}
+    .keyword{font-size:12px;letter-spacing:.015em;border:1px solid var(--line2);border-radius:999px;padding:6px 11px;color:#b8cfd0;background:rgba(167,233,216,.03)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .button{border-radius:11px;border:1px solid transparent;padding:11px 19px;display:inline-flex;gap:10px;justify-content:center;align-items:center;font-weight:790;font-size:13px;min-height:45px;transition:transform .2s,background .2s,border-color .2s}
+    .button:hover{transform:translateY(-2px)}
+    .button.primary{background:var(--accent);color:#0b2924}
+    .button.primary:hover{background:#d2ffe2}
+    .button.ghost{border-color:var(--line2);color:var(--ink);background:rgba(255,255,255,.025)}
+    .button.ghost:hover{border-color:#8cb5b6}
+    .button.small{font-size:12px;padding:9px 12px;min-height:36px}
+    .hero-footnote{font-size:11px;letter-spacing:.05em;color:#69848d;margin-top:23px}
+    .hero-visual{position:relative;min-width:0}
+    .visual-card{border:1px solid rgba(152,228,218,.21);border-radius:25px;background:linear-gradient(130deg,rgba(24,54,64,.82),rgba(12,34,43,.92));padding:17px;box-shadow:0 30px 100px rgba(0,0,0,.2);position:relative;overflow:hidden}
+    .visual-card:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.06),transparent 40%)}
+    .visual-title{display:flex;align-items:center;justify-content:space-between;font:700 10px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.11em;color:#86b6bd;gap:6px}
+    .status-dot{display:inline-block;width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent);margin-right:8px}
+    .robot-scheme{width:100%;height:auto;display:block;margin-top:13px}
+    .visual-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .visual-stat{border:1px solid rgba(154,205,205,.12);background:rgba(1,15,23,.3);border-radius:12px;padding:12px 14px}
+    .visual-stat span{font:700 10px ui-monospace,monospace;color:#8aacb4;letter-spacing:.07em}
+    .visual-stat strong{display:block;font-size:15px;margin-top:3px;color:#eff9f6;letter-spacing:.015em}
+    .float-tag{position:absolute;top:11%;right:-17px;padding:10px 15px;border:1px solid #2a4f55;border-radius:12px;background:rgba(16,40,48,.98);box-shadow:0 15px 35px rgba(0,0,0,.24);font:750 11px ui-monospace,monospace;color:var(--accent);transform:rotate(4deg)}
+    .float-tag.bottom{top:auto;bottom:18%;right:auto;left:-24px;color:var(--orange);transform:rotate(-5deg)}
+    .proof-strip{border-block:1px solid var(--line);background:rgba(255,255,255,.017)}
+    .proof-inner{display:grid;grid-template-columns:repeat(3,1fr);padding:24px 0;gap:24px}
+    .proof{display:flex;gap:15px;align-items:center;min-width:0}
+    .proof:not(:last-child){border-right:1px solid var(--line)}
+    .proof-number{font-size:29px;font-weight:900;letter-spacing:-.055em;color:var(--accent);white-space:nowrap;line-height:1.15}
+    .proof-title{font-size:12px;color:#e3f1f1;font-weight:720;line-height:1.5}
+    .proof-note{font-size:11px;color:#71919a;line-height:1.4;margin-top:2px}
+    .section{padding:92px 0 8px}
+    .section-heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}
+    .section-heading h2{font-size:clamp(27px,3.5vw,44px);line-height:1.2;letter-spacing:-.045em;margin:10px 0 0}
+    .section-aside{color:#89a5ae;font-size:13px;max-width:370px;margin:0}
+    .roles-frame{border:1px solid var(--line2);border-radius:var(--radius);background:linear-gradient(130deg,rgba(24,47,57,.72),rgba(14,31,39,.89));overflow:hidden}
+    .role-controls{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+    .role-control{min-width:0;text-align:left;border:0;border-right:1px solid var(--line);color:#96b0b8;background:transparent;padding:24px 22px 20px;transition:background .2s}
+    .role-control:last-child{border-right:0}
+    .role-control:hover{background:rgba(255,255,255,.026)}
+    .role-control[aria-selected=true]{color:var(--ink);background:rgba(154,255,198,.07);box-shadow:inset 0 3px 0 var(--accent)}
+    .role-control .ordinal{display:block;color:#6f949d;font:700 11px ui-monospace,Consolas,monospace;margin-bottom:9px}
+    .role-control strong{display:block;font-size:15px;line-height:1.3}
+    .role-control small{display:block;margin-top:5px;font-size:11px;line-height:1.45;opacity:.78}
+    .role-content{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;padding:40px 42px 44px;min-height:272px;align-items:start}
+    .role-content h3{font-size:28px;letter-spacing:-.03em;line-height:1.34;margin:2px 0 13px}
+    .role-content p{font-size:14px;line-height:1.95;color:#a6bbc1;margin:0}
+    .bullet-stack{display:grid;gap:11px;margin:0;padding:0;list-style:none}
+    .bullet-stack li{position:relative;padding-left:19px;font-size:13px;color:#c8dadc}
+    .bullet-stack li:before{content:"+";color:var(--accent);font-weight:bold;position:absolute;left:0}
+    .role-skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+    .role-skills span{font-size:11px;padding:5px 9px;border-radius:7px;color:#8dcdd0;background:#153b44}
+    .filter-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+    .filter-pills{display:flex;gap:8px;flex-wrap:wrap}
+    .filter-button{border:1px solid var(--line2);border-radius:9px;padding:8px 13px;background:transparent;color:#96b3ba;font-size:12px;font-weight:760}
+    .filter-button:hover{border-color:#61999c;color:#fff}
+    .filter-button[aria-pressed=true]{background:var(--accent);color:#0a2925;border-color:var(--accent)}
+    .project-count{font-size:11px;color:#668b93;letter-spacing:.07em}
+    .project-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+    .project{grid-column:span 2;border-radius:17px;border:1px solid var(--line2);background:linear-gradient(152deg,#142b37,#0d212a);overflow:hidden;display:flex;flex-direction:column;min-height:400px;transition:transform .2s,border-color .2s}
+    .project:nth-child(-n+2){grid-column:span 3}
+    .project:hover{transform:translateY(-5px);border-color:rgba(182,244,205,.47)}
+    .project-art{height:155px;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.055);background:radial-gradient(circle at 70% 40%,rgba(89,201,201,.13),transparent 50%),#122c37}
+    .project-art:after{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(182,244,205,.055) 1px,transparent 1px),linear-gradient(to bottom,rgba(182,244,205,.055) 1px,transparent 1px);background-size:25px 25px;pointer-events:none}
+    .project-art.warm{background:radial-gradient(circle at 75% 30%,rgba(255,191,123,.14),transparent 50%),#2a2931}
+    .project-art.blue{background:radial-gradient(circle at 75% 30%,rgba(125,185,255,.13),transparent 50%),#182c40}
+    .project-art svg{height:100%;max-width:100%;display:block;margin:auto;position:relative;z-index:1}
+    .project-id{position:absolute;top:14px;left:18px;z-index:2;font:700 10px ui-monospace,Consolas,monospace;letter-spacing:.16em;color:#bfdee0}
+    .project-info{padding:21px 22px 22px;display:flex;flex:1;flex-direction:column}
+    .project-role{font-size:10px;letter-spacing:.06em;color:var(--accent);font-weight:780;margin-bottom:5px}
+    .project h3{font-size:18px;letter-spacing:-.025em;line-height:1.48;margin:0 0 10px}
+    .project-desc{font-size:12px;color:#9fb8be;line-height:1.83;margin:0 0 19px;flex:1}
+    .tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+    .tag{border:1px solid var(--line);border-radius:6px;color:#8faeb5;padding:2px 7px;font-size:10px;white-space:nowrap}
+    .card-open{display:inline-flex;align-items:center;justify-content:space-between;gap:5px;width:100%;border:0;border-top:1px solid var(--line);padding:13px 0 0;background:none;color:var(--accent);font-size:12px;font-weight:780;text-align:left}
+    .card-open .arrow{transition:transform .2s}
+    .card-open:hover .arrow{transform:translateX(5px)}
+    .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .cap-card{padding:24px 19px;min-height:230px;border-radius:15px;border:1px solid var(--line);background:rgba(19,42,52,.68)}
+    .cap-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#193d43;color:var(--accent);font:900 21px ui-monospace,monospace;margin-bottom:20px}
+    .cap-card h3{font-size:15px;margin:0 0 10px}
+    .cap-card p{color:#91adb4;font-size:12px;line-height:1.8;margin:0}
+    .cap-card strong{color:#cfe2e2;font-weight:660}
+    .journey{display:grid;grid-template-columns:1fr 1fr;gap:19px}
+    .journey-card{border-radius:16px;border:1px solid var(--line2);padding:27px 28px;background:#112630}
+    .journey-type{font:800 11px ui-monospace,Consolas,monospace;color:var(--accent);letter-spacing:.14em}
+    .journey-card h3{font-size:22px;margin:13px 0 6px}
+    .journey-card p{font-size:13px;color:#a4bdc3;margin:0}
+    .journey-card .date{font-size:11px;margin-top:25px;color:#6b939b;letter-spacing:.05em}
+    .honors{margin-top:18px;padding:19px 23px;border-radius:13px;border:1px solid var(--line);display:flex;align-items:center;gap:13px;flex-wrap:wrap;color:#c5d9da;font-size:12px}
+    .honors strong{color:var(--accent)}
+    .honors .sep{color:#4d727b}
+    .resume-panel{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:linear-gradient(116deg,#1e483f,#17363e 55%,#132d3a);border:1px solid rgba(182,244,205,.28);border-radius:20px;padding:38px 42px;position:relative;overflow:hidden}
+    .resume-panel:after{content:"CV";position:absolute;right:20px;top:-36px;font-weight:900;letter-spacing:-.09em;font-size:185px;line-height:1;color:rgba(255,255,255,.035);pointer-events:none}
+    .resume-panel h3{font-size:28px;line-height:1.3;letter-spacing:-.036em;margin:0 0 11px}
+    .resume-panel p{color:#b7d1ca;font-size:13px;line-height:1.8;max-width:455px;margin:0}
+    .resume-actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;flex-wrap:wrap;position:relative;z-index:1}
+    .resume-select{font-family:inherit;color:#ecf8f1;background:#174239;border:1px solid #537c71;border-radius:10px;padding:12px 15px;min-height:45px;max-width:100%;font-size:13px}
+    .resume-select option{background:#14352f}
+    .contact-panel{display:grid;grid-template-columns:1fr auto;gap:35px;align-items:center;border:1px solid var(--line2);border-radius:20px;padding:34px 38px;background:rgba(24,50,61,.65)}
+    .contact-panel h3{font-size:30px;letter-spacing:-.035em;margin:0 0 10px}
+    .contact-panel p{color:#97b3b9;font-size:13px;margin:0;max-width:600px}
+    .contact-links{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+    .contact-link{font-size:12px;border:1px solid var(--line2);padding:11px 13px;border-radius:9px;display:inline-flex;gap:8px;align-items:center;font-weight:750;color:#dfefee}
+    .contact-link:hover{border-color:var(--accent);color:var(--accent)}
+    .site-footer{margin-top:78px;border-top:1px solid var(--line);padding:28px 0 45px;color:#67848d;font-size:11px}
+    .footer-inner{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .footer-inner strong{color:#b1d3cf;letter-spacing:-.02em}
+    .dialog{border:1px solid rgba(169,215,213,.3);border-radius:18px;padding:0;background:#112630;color:var(--ink);width:min(800px,calc(100% - 30px));max-height:min(88vh,900px);box-shadow:0 35px 90px rgba(0,0,0,.48);overflow:auto}
+    .dialog::backdrop{background:rgba(0,11,18,.8);backdrop-filter:blur(7px)}
+    .dialog-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 25px;border-bottom:1px solid var(--line);background:#112630}
+    .dialog-head strong{font-size:14px}
+    .close{background:#20404b;border:1px solid var(--line2);border-radius:9px;color:#fff;width:36px;height:36px;font-size:23px;line-height:1}
+    .dialog-body{padding:28px 30px 32px}
+    .dialog-body .overline{color:var(--accent);font:800 11px ui-monospace,monospace;letter-spacing:.1em}
+    .dialog-body h2{font-size:29px;line-height:1.35;letter-spacing:-.028em;margin:10px 0 4px}
+    .dialog-body .metadata{color:#8fb0b7;font-size:12px;margin:0 0 23px}
+    .detail-block{border-top:1px solid var(--line);padding-top:16px;margin-top:18px}
+    .detail-block h3{color:var(--accent);margin:0 0 9px;font-size:13px}
+    .detail-block p,.detail-block li{font-size:13px;line-height:1.88;color:#bad0d1}
+    .detail-block p{margin:0}
+    .detail-block ul{margin:0;padding-left:20px}
+    .small-note{color:#6d929a;font-size:11px;margin-top:20px}
+    .resume-sheet{background:#fff;color:#1b2d35;border-radius:6px;padding:34px;max-width:100%;}
+    .resume-sheet h2{font-size:32px;color:#122b37;margin:0}
+    .resume-sheet h3{font-size:15px;color:#176c72;margin:22px 0 10px;border-bottom:1px solid #c5d7d9;padding-bottom:6px}
+    .resume-sheet .cv-title{font-size:14px;color:#40757b;font-weight:800;margin:0 0 13px}
+    .resume-sheet .cv-summary{font-size:12px;color:#4e6970;line-height:1.75;margin:0 0 14px}
+    .resume-sheet .cv-info{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11px;color:#59757c}
+    .resume-sheet .cv-item{margin:0 0 17px}
+    .resume-sheet .cv-item strong{font-size:13px}
+    .resume-sheet .cv-item small{display:block;color:#5c7880;font-size:11px;margin-top:2px}
+    .resume-sheet ul{margin:7px 0 0;padding-left:18px}
+    .resume-sheet li{font-size:11px;line-height:1.7;margin-bottom:4px}
+    .resume-sheet .cv-skills{display:flex;gap:6px;flex-wrap:wrap}
+    .resume-sheet .cv-skills span{border:1px solid #c8dada;padding:3px 7px;border-radius:5px;font-size:10px;color:#326971}
+    .resume-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+    #print-area{display:none}
+    @media(max-width:950px){.hero{grid-template-columns:1fr .85fr;gap:20px}.role-content{gap:20px}.cap-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project,.project:nth-child(-n+2){grid-column:auto}.resume-panel{padding:32px}.main-nav{gap:14px}}
+    @media(max-width:700px){.container{width:min(100% - 30px,var(--max))}.header-inner{flex-wrap:wrap;padding:11px 0;min-height:65px}.main-nav{order:3;width:100%;overflow-x:auto;justify-content:space-between;gap:14px;padding-bottom:4px}.main-nav a{font-size:12px}.header-action{font-size:11px;padding:6px 11px}.hero{grid-template-columns:1fr;min-height:0;padding:49px 0 54px;gap:30px}.hero h1{font-size:51px}.hero-lead{font-size:15px}.hero-visual{max-width:560px;width:calc(100% - 16px);margin:0 auto}.float-tag{right:-9px;top:10%;font-size:9px}.float-tag.bottom{left:-12px;bottom:14%}.proof-inner{grid-template-columns:1fr;gap:14px;padding:20px 0}.proof{gap:15px}.proof:not(:last-child){border-right:0;border-bottom:1px solid var(--line);padding-bottom:13px}.section{padding-top:67px}.section-heading{display:block}.section-aside{margin-top:10px}.role-controls{grid-template-columns:repeat(2,1fr)}.role-control:nth-child(2){border-right:0}.role-control:nth-child(-n+2){border-bottom:1px solid var(--line)}.role-control{padding:17px 14px}.role-content{grid-template-columns:1fr;gap:23px;padding:25px 22px}.role-content h3{font-size:23px}.project-grid{grid-template-columns:1fr}.project-art{height:165px}.cap-grid{grid-template-columns:1fr 1fr}.journey{grid-template-columns:1fr}.resume-panel{grid-template-columns:1fr;gap:21px;padding:28px 22px}.resume-actions{justify-content:flex-start}.contact-panel{grid-template-columns:1fr;padding:28px 22px}.contact-links{justify-content:flex-start}.site-footer{margin-top:55px}.dialog-body{padding:20px}.resume-sheet{padding:20px}}
+    @media(max-width:430px){.hero h1{font-size:44px}.hero-keywords{margin:20px 0 26px}.role-control strong{font-size:14px}.role-control small{font-size:10px}.cap-grid{grid-template-columns:1fr}.proof-number{font-size:24px}.resume-select{width:100%}.resume-actions .button{width:100%}.contact-panel h3{font-size:26px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+    @media print{
+      @page{size:A4;margin:15mm}
+      html,body{background:white!important;color:#172a34!important}
+      body:before,body:after{display:none!important}
+      body> :not(#print-area){display:none!important}
+      #print-area{display:block!important;position:static;width:100%}
+      #print-area .resume-sheet{box-shadow:none;padding:0;border:0;color:#182c34}
+      #print-area .resume-sheet h3{break-after:avoid}
+      #print-area .resume-sheet .cv-item{break-inside:avoid}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="logo" href="#top" aria-label="GZH 首页">GZH<span>.</span></a>
-      <nav aria-label="站点导航">
-        <a href="#directions">求职方向</a><a href="#projects">项目经历</a><a href="#about">关于与联系</a>
-      </nav>
-      <a class="toplink" href="https://github.com/1820766788" target="_blank" rel="noopener">GitHub ↗</a>
-    </div>
-  </header>
-  <main id="top" class="wrap">
-    <div class="hero">
+<a class="skip" href="#main">跳转到主要内容</a>
+<header class="site-header"><div class="container header-inner">
+  <a class="brand" href="#top" aria-label="GZH 网站首页">GZH<b>.</b></a>
+  <nav class="main-nav" aria-label="主导航">
+    <a href="#directions">求职方向</a><a href="#projects">项目案例</a><a href="#capabilities">技术能力</a><a href="#education">教育经历</a><a href="#resumes">在线简历</a>
+  </nav>
+  <a class="header-action" id="header-github" href="https://github.com/1820766788" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+</div></header>
+<main id="main">
+  <div class="container" id="top">
+    <section class="hero" aria-labelledby="hero-title">
       <div>
-        <div class="eyebrow">Portfolio · Engineering × Robotics × AI</div>
-        <h1>你好，我是<br><em>GZH.</em></h1>
-        <p class="lead">关注机械设计与机器人系统研发，探索从机构设计、结构分析到算法应用与产品落地的完整工程链路。</p>
-        <div class="pills">
-          <span class="pill">机械设计</span><span class="pill">机器人研发</span><span class="pill">结构仿真</span><span class="pill">AI 辅助开发</span>
+        <div class="eyebrow">PERSONAL PORTFOLIO / 2026</div>
+        <h1 id="hero-title">让机械设计<br>与<em>智能算法</em><br>协同落地<span style="color:var(--accent)">.</span></h1>
+        <p class="hero-lead">你好，我是 <strong style="color:#e2f4f0">郭子豪 GZH</strong>，武汉科技大学机械工程硕士研究生。关注机器人总体方案、机械结构与仿真、多机器人协同，以及 AI 技术的工程应用。</p>
+        <div class="hero-keywords" aria-label="技术方向">
+          <span class="keyword">机械设计 / CAD</span><span class="keyword">结构仿真 / CAE</span><span class="keyword">机器人算法</span><span class="keyword">AI 应用开发</span>
         </div>
-        <div class="actions">
-          <a class="btn" href="#directions">查看求职方向 ↓</a>
-          <a class="btn secondary" href="#projects">浏览项目</a>
+        <div class="cta-row"><a class="button primary" href="#projects">探索我的项目 <span aria-hidden="true">↗</span></a><a class="button ghost" href="#resumes">查看岗位简历 <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-footnote">ENGINEERING · ROBOTICS · PRODUCT THINKING</div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="visual-title"><span>GZH / ROBOTICS WORKBENCH</span><span><i class="status-dot"></i>DESIGN IN PROGRESS</span></div>
+          <svg class="robot-scheme" viewBox="0 0 420 355" role="img" aria-label="机器人结构与运动轨迹的概念线稿示意图，非项目实物照片">
+            <defs><linearGradient id="armfill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#275e63"/><stop offset="1" stop-color="#153841"/></linearGradient><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".8" fill="#548b91" opacity=".35"/></pattern></defs>
+            <rect width="420" height="355" fill="url(#dots)"/>
+            <g opacity=".55" fill="none" stroke="#4e8187" stroke-width="1" stroke-dasharray="4 6"><path d="M25 302H396M28 55H393M53 20V332M361 20V331"/><circle cx="218" cy="189" r="117"/><circle cx="218" cy="189" r="147"/><path d="M50 190H380M218 20V329"/></g>
+            <g transform="translate(38 30)">
+              <ellipse cx="170" cy="274" rx="139" ry="12" fill="#000" opacity=".23"/>
+              <path d="M58 238L314 238L293 263L77 263Z" fill="#16424b" stroke="#76aaac" stroke-width="1.5"/>
+              <rect x="84" y="203" width="195" height="40" rx="7" fill="#1b444e" stroke="#a2c4ba" stroke-width="1.5"/>
+              <circle cx="105" cy="252" r="18" fill="#1a4148" stroke="#9ec8c0" stroke-width="2"/><circle cx="105" cy="252" r="7" fill="#93e3c5"/>
+              <circle cx="258" cy="252" r="18" fill="#1a4148" stroke="#9ec8c0" stroke-width="2"/><circle cx="258" cy="252" r="7" fill="#93e3c5"/>
+              <rect x="130" y="170" width="81" height="40" rx="4" fill="url(#armfill)" stroke="#99c7bd" stroke-width="2"/>
+              <path d="M157 169L118 91L139 78L187 164" fill="#1f5259" stroke="#9bcabe" stroke-width="2.5"/>
+              <circle cx="129" cy="89" r="18" fill="#1e5159" stroke="#b1e8ce" stroke-width="3"/><circle cx="129" cy="89" r="7" fill="#88ccc4"/>
+              <path d="M121 74L198 42L208 62L142 106" fill="url(#armfill)" stroke="#a2d9c6" stroke-width="2.5"/>
+              <circle cx="202" cy="50" r="14" fill="#1e5159" stroke="#bcf1d5" stroke-width="3"/><circle cx="202" cy="50" r="5" fill="#8dbeb7"/>
+              <path d="M214 45L269 67L263 83L206 64Z" fill="#285862" stroke="#b0decf" stroke-width="2"/>
+              <rect x="259" y="68" width="15" height="22" rx="4" fill="#2e6267" stroke="#b5ebcf" stroke-width="2"/>
+              <path d="M272 70l21 -13m-19 26l22 16" stroke="#a2ecce" stroke-width="6" stroke-linecap="round"/>
+              <path d="M183 207V171m-48 36V175" stroke="#b7eccf" stroke-width="3" stroke-dasharray="5 5"/>
+            </g>
+            <g fill="#bcf5d7" font-family="ui-monospace,monospace" font-size="10"><text x="306" y="41">JOINT_03</text><text x="23" y="96">RANGE</text><text x="310" y="308">FRAME_01</text></g>
+            <g stroke="#90d5cc" stroke-width="1.1" fill="none" opacity=".88"><path d="M292 54H350V44"/><path d="M99 116H43V103"/><path d="M289 285H355V301"/><circle cx="292" cy="54" r="3" fill="#a9efce"/><circle cx="99" cy="116" r="3" fill="#a9efce"/></g>
+          </svg>
+          <div class="visual-bottom"><div class="visual-stat"><span>ENGINEERING</span><strong>机构 · 集成 · 验证</strong></div><div class="visual-stat"><span>INTELLIGENCE</span><strong>感知 · 规划 · 闭环</strong></div></div>
         </div>
+        <div class="float-tag">SYS / MECHANICS ✓</div><div class="float-tag bottom">AI / INTEGRATION ↗</div>
       </div>
-      <div class="portrait" aria-label="GZH 个人品牌展示">
-        <div class="mini">DESIGN • BUILD • IMPROVE</div>
-        <div><strong>GZH</strong><p>Engineering ideas into working systems.</p></div>
-        <div class="stats"><div><b>Mechanical</b>结构与机构设计</div><div><b>Intelligent</b>算法与智能系统</div></div>
-      </div>
+    </section>
+  </div>
+  <div class="proof-strip" aria-label="典型项目成果"><div class="container proof-inner">
+    <div class="proof"><div class="proof-number">1 m</div><div><div class="proof-title">伸出机构载荷工况分析</div><div class="proof-note">铁路装卸机器人 / SolidWorks 静应力</div></div></div>
+    <div class="proof"><div class="proof-number">10.45%</div><div><div class="proof-title">任务完成步数降低</div><div class="proof-note">多机器人仿真 / 220 步 → 197 步</div></div></div>
+    <div class="proof"><div class="proof-number">4 ×</div><div><div class="proof-title">岗位定制展示</div><div class="proof-note">综合 / 结构仿真 / 产品研发 / AI 产品</div></div></div>
+  </div></div>
+  <section class="section container" id="directions" aria-labelledby="directions-title">
+    <div class="section-heading"><div><div class="section-kicker">01 / Career Perspectives</div><h2 id="directions-title">以岗位需求为中心展示能力</h2></div><p class="section-aside">同一段工程经历，面向不同岗位突出不同的技术链路与交付价值。</p></div>
+    <div class="roles-frame"><div class="role-controls" role="tablist" aria-label="选择求职方向">
+      <button class="role-control" type="button" role="tab" data-role="all" aria-selected="true"><span class="ordinal">01 / GENERAL</span><strong>综合方向</strong><small>机械 × 机器人 × 算法</small></button>
+      <button class="role-control" type="button" role="tab" data-role="simulation" aria-selected="false"><span class="ordinal">02 / CAE</span><strong>结构仿真</strong><small>分析 / 校核 / 可靠性</small></button>
+      <button class="role-control" type="button" role="tab" data-role="product" aria-selected="false"><span class="ordinal">03 / R&D</span><strong>产品研发</strong><small>方案 / 采购 / 交付</small></button>
+      <button class="role-control" type="button" role="tab" data-role="ai" aria-selected="false"><span class="ordinal">04 / AI</span><strong>AI 产品</strong><small>识别 / 应用 / 集成</small></button>
+    </div><div id="role-panel" class="role-content" role="tabpanel" aria-live="polite">
+      <div><h3 id="role-title">机械工程与智能机器人系统</h3><p id="role-intro"></p><div class="role-skills" id="role-skills"></div></div><ul class="bullet-stack" id="role-bullets"></ul>
+    </div></div>
+  </section>
+  <section class="section container" id="projects" aria-labelledby="projects-title">
+    <div class="section-heading"><div><div class="section-kicker">02 / Selected Projects</div><h2 id="projects-title">项目案例 · 从问题到验证</h2></div><p class="section-aside">点击每个项目的「查看技术过程」，展开业务背景、个人职责、技术方法与结果。</p></div>
+    <div class="filter-bar"><div class="filter-pills" role="group" aria-label="项目分类筛选">
+      <button class="filter-button" data-filter="all" aria-pressed="true">全部项目</button><button class="filter-button" data-filter="mechanics" aria-pressed="false">机械与仿真</button><button class="filter-button" data-filter="algorithm" aria-pressed="false">机器人算法</button><button class="filter-button" data-filter="application" aria-pressed="false">AI 与应用</button>
+    </div><span class="project-count" id="project-count">05 / PROJECTS</span></div>
+    <div class="project-grid" id="project-grid"></div>
+  </section>
+  <section class="section container" id="capabilities" aria-labelledby="capabilities-title">
+    <div class="section-heading"><div><div class="section-kicker">03 / Technical Stack</div><h2 id="capabilities-title">跨越软硬件边界的工程能力</h2></div><p class="section-aside">不仅关注某个工具是否会用，更关注怎样把需求、建模、分析和验证连接成完整流程。</p></div>
+    <div class="cap-grid">
+      <div class="cap-card"><div class="cap-icon">M</div><h3>机械设计与机构研发</h3><p><strong>SolidWorks、机构方案、零部件选型。</strong> 具备剪叉伸缩、取料机械手、俯仰升降等结构相关项目经验。</p></div>
+      <div class="cap-card"><div class="cap-icon">S</div><h3>结构分析与工程校核</h3><p><strong>静应力、载荷工况、整机稳定性。</strong> 面向关键机构分析应力分布，结合工况完成防倾覆评估。</p></div>
+      <div class="cap-card"><div class="cap-icon">R</div><h3>机器人规划与数据分析</h3><p><strong>Python、MATLAB、A*、SIPP。</strong> 关注多机器人任务分配、时空路径规划和事件触发优化。</p></div>
+      <div class="cap-card"><div class="cap-icon">AI</div><h3>智能感知与应用开发</h3><p><strong>PyTorch、OpenCV、OCR。</strong> 具备视觉分割和微信小程序前后端、数据库及云端业务链路开发经验。</p></div>
     </div>
-    <section id="directions">
-      <div class="section-head"><h2>一个人，四种职业视角</h2><p>点击切换不同岗位的展示重点</p></div>
-      <div class="view">
-        <div class="tabs" role="tablist" aria-label="求职方向">
-          <button class="tab" type="button" role="tab" data-view="all" aria-selected="true">综合介绍</button>
-          <button class="tab" type="button" role="tab" data-view="simulation" aria-selected="false">结构仿真</button>
-          <button class="tab" type="button" role="tab" data-view="product" aria-selected="false">产品研发</button>
-          <button class="tab" type="button" role="tab" data-view="ai" aria-selected="false">AI 产品</button>
-        </div>
-        <div class="view-body" role="tabpanel" id="view-panel" aria-live="polite">
-          <div><h3 id="view-title"></h3><p id="view-intro"></p><ul id="view-points"></ul></div>
-          <div class="aside"><div class="kicker">FOCUS AREAS / 能力关键词</div><div class="chips" id="view-chips"></div><p class="notice">各岗位的 PDF 简历下载入口将在核对版本后补充，避免误用旧版资料。</p></div>
-        </div>
-      </div>
-    </section>
-    <section id="projects">
-      <div class="section-head"><h2>代表项目</h2><p>以下是项目概览，技术细节可继续补充</p></div>
-      <div class="cards">
-        <article class="card"><div class="id">PROJECT / 01</div><h3>铁路零担货物智能装卸机器人</h3><p>围绕装卸作业场景，开展机器人总体方案、机构设计与整机集成相关工作。</p><div class="tags">机构设计 · 系统集成 · 稳定性分析</div></article>
-        <article class="card"><div class="id">PROJECT / 02</div><h3>机动型建筑墙面砂浆喷抹一体机器人</h3><p>聚焦建筑墙面作业中的机构布置、功能集成及机器人运动与作业能力。</p><div class="tags">机器人研发 · 结构设计 · 工程应用</div></article>
-        <article class="card"><div class="id">PROJECT / 03</div><h3>多机器人协同与任务规划</h3><p>关注多机器人任务分配、协同优化和闭环执行，探索算法与实际系统的结合。</p><div class="tags">任务分配 · 协同规划 · 算法应用</div></article>
-      </div>
-    </section>
-    <section id="about">
-      <div class="section-head"><h2>关于我</h2><p>设计思维与工程实践并重</p></div>
-      <div class="about">
-        <div><h3>教育与研究</h3><p>武汉科技大学 · 机械工程相关研究方向。关注机器人系统、机械设计与算法应用的结合。</p></div>
-        <div><h3>联系与进一步了解</h3><p>项目及简历内容正在逐步完善。你可以先查看我的 <a href="https://github.com/1820766788" target="_blank" rel="noopener">GitHub 主页 ↗</a>。邮箱、电话等信息在本人确认后再公开。</p></div>
-      </div>
-    </section>
-  </main>
-  <footer><div class="wrap"><span>© <span id="year"></span> GZH · 个人作品集</span><span>Designed for GitHub Pages · 静态网站</span></div></footer>
-  <script>
-    // 后续更换简介和技能，只需要修改下方数据。
-    const VIEWS = {
-      all: {title:"机械设计 × 机器人 × 智能应用",intro:"从方案构思到工程落地，关注结构、控制和算法之间的协同。",points:["机器人总体设计与关键机构研发","结构分析、方案验证及工程实现","多机器人协同与智能感知相关探索"],chips:["机器人系统","SolidWorks","方案设计","工程集成","协同规划"]},
-      simulation: {title:"结构仿真与机械设计",intro:"以结构可靠性、受力分析和可制造性为核心，支持产品迭代与方案验证。",points:["关键机构设计与零部件选型","静应力分析与典型载荷工况验证","整机稳定性与防倾覆分析"],chips:["结构设计","静应力分析","载荷工况","防倾覆","零件选型"]},
-      product: {title:"产品研发与工程落地",intro:"关注客户需求、总体方案、供应协同、样机交付之间的全过程闭环。",points:["产品方案设计、机构选型与集成","采购及制造过程中的沟通协同","样机验证、问题跟踪与优化改进"],chips:["产品研发","项目协同","BOM","供应商沟通","样机交付"]},
-      ai: {title:"AI 产品与工程应用",intro:"利用 AI 辅助开发和智能感知技术，推动工程问题转化为可用产品。",points:["将 AI 工具应用于编程与工程任务","关注 OCR、视觉感知及软件系统集成","结合机器人应用场景进行产品化思考"],chips:["AI 辅助开发","OCR","视觉感知","需求分析","原型验证"]}
-    };
-    const tabs = [...document.querySelectorAll(".tab")];
-    function showView(name) {
-      const view=VIEWS[name] || VIEWS.all;
-      document.getElementById("view-title").textContent=view.title;
-      document.getElementById("view-intro").textContent=view.intro;
-      const list=document.getElementById("view-points"); list.replaceChildren();
-      view.points.forEach(s=>{const li=document.createElement("li");li.textContent=s;list.append(li);});
-      const chips=document.getElementById("view-chips");chips.replaceChildren();
-      view.chips.forEach(s=>{const span=document.createElement("span");span.className="chip";span.textContent=s;chips.append(span);});
-      tabs.forEach(tab=>tab.setAttribute("aria-selected",String(tab.dataset.view===name)));
-    }
-    tabs.forEach((tab,i)=>{
-      tab.addEventListener("click",()=>showView(tab.dataset.view));
-      tab.addEventListener("keydown",e=>{
-        let next=null;
-        if(e.key==="ArrowRight")next=(i+1)%tabs.length;
-        if(e.key==="ArrowLeft")next=(i-1+tabs.length)%tabs.length;
-        if(e.key==="Home")next=0;
-        if(e.key==="End")next=tabs.length-1;
-        if(next!==null){e.preventDefault();tabs[next].focus();showView(tabs[next].dataset.view);}
-      });
-    });
-    document.getElementById("year").textContent=new Date().getFullYear();
-    showView("all");
-  </script>
+  </section>
+  <section class="section container" id="education" aria-labelledby="education-title">
+    <div class="section-heading"><div><div class="section-kicker">04 / Background</div><h2 id="education-title">教育经历与专业积累</h2></div><p class="section-aside">以机器人工程为基础，持续在机械工程研究与应用项目中拓宽能力边界。</p></div>
+    <div class="journey">
+      <article class="journey-card"><div class="journey-type">MASTER / 研究生</div><h3>武汉科技大学</h3><p>机械工程 · 硕士研究生</p><div class="date">2024.09 — 2027.06（预计毕业）</div></article>
+      <article class="journey-card"><div class="journey-type">BACHELOR / 本科</div><h3>文华学院</h3><p>机器人工程 · 本科</p><div class="date">2020.09 — 2024.06</div></article>
+    </div>
+    <div class="honors"><strong>SELECTED HONORS / 部分成果</strong><span>全国三维数字化创新设计大赛一等奖</span><span class="sep">/</span><span>连续两年获得一等学业奖学金</span><span class="sep">/</span><span>英语 CET-6</span></div>
+  </section>
+  <section class="section container" id="resumes" aria-labelledby="resumes-title">
+    <div class="section-heading"><div><div class="section-kicker">05 / Resume Center</div><h2 id="resumes-title">四个方向，一键切换简历</h2></div><p class="section-aside">按岗位选择在线简历；可通过浏览器打印功能另存 PDF，不依赖额外插件。</p></div>
+    <div class="resume-panel"><div><h3>把最相关的经历，<br>呈现给对的人。</h3><p>已将四份简历的主要技能与项目整理为公开展示版。仅使用经过筛选的内容，手机号和存在版本冲突的信息默认不公开。</p></div>
+      <div class="resume-actions"><label for="resume-choice" class="sr-only" style="position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden">选择简历方向</label><select class="resume-select" id="resume-choice"><option value="all">综合 / 机器人与算法</option><option value="simulation">结构仿真工程师</option><option value="product">产品研发工程师</option><option value="ai">AI 产品工程师</option></select><button type="button" class="button primary" id="resume-preview">在线查看简历 ↗</button></div>
+    </div>
+  </section>
+  <section class="section container" id="contact" aria-labelledby="contact-title">
+    <div class="contact-panel"><div><div class="section-kicker">06 / Get In Touch</div><h3 id="contact-title">期待把设计构想变成工程成果。</h3><p>欢迎就机器人研发、结构仿真、产品研发与 AI 工程应用方向交流。公开联系方式可在页面底部配置区自行开启。</p></div><div class="contact-links" id="contact-links"><a class="contact-link" href="https://github.com/1820766788" target="_blank" rel="noopener noreferrer">GitHub 主页 ↗</a></div></div>
+  </section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><span><strong>GZH.</strong> © <span id="current-year">2026</span> 郭子豪 · Personal portfolio</span><span>自包含静态网站 · GitHub Pages · 概念插画不代表项目实物照片</span></div></footer>
+<dialog class="dialog" id="project-dialog" aria-labelledby="project-dialog-title"><div class="dialog-head"><strong>PROJECT FILE / 项目技术档案</strong><button class="close" type="button" data-close="project-dialog" aria-label="关闭项目详情">×</button></div><div class="dialog-body" id="project-dialog-content"></div></dialog>
+<dialog class="dialog" id="resume-dialog" aria-labelledby="resume-dialog-title"><div class="dialog-head"><strong id="resume-dialog-title">ONLINE RESUME / 在线简历</strong><button class="close" type="button" data-close="resume-dialog" aria-label="关闭在线简历">×</button></div><div class="dialog-body"><div id="resume-dialog-content"></div><div class="resume-tools"><span style="font-size:11px;color:#8ca8af">提示：打印时选择“另存为 PDF”即可保存简历。</span><button type="button" class="button primary small" id="print-resume">打印 / 另存 PDF ↗</button></div></div></dialog>
+<div id="print-area" aria-hidden="true"></div>
+<script>
+/* ================================================================
+   ★ 唯一需要经常编辑的资料区：SITE_DATA
+   1. 调整个人简介、项目介绍、在线简历要点可以直接改这里。
+   2. email/phone 默认为空，不会意外公开手机号。
+   3. 项目日期在四份简历中有冲突，因此默认不展示。
+   4. 论文分区/状态、专业排名存在不同版本，故未在公开网页展示。
+   ================================================================ */
+const SITE_DATA = {
+  person: {
+    name: "郭子豪", brand: "GZH", github: "https://github.com/1820766788",
+    email: "", // 若自愿公开，可填入自己的邮箱，例如 name@example.com
+    phone: ""  // 公开网站一般不推荐直接公布手机号码
+  },
+  roles: {
+    all: {title:"机械工程与智能机器人系统", intro:"以机器人系统为核心，具备总体方案、关键机构设计、整机集成和算法应用等跨方向项目经验，能够理解产品实现中的机械、算法与工程协同需求。", bullets:["从 0 到 1 参与机器人方案、机构开发与系统落地", "使用 Python / MATLAB 完成算法实现与仿真分析", "具备 OCR 识别、微信小程序与数据管理的应用开发经验"],skills:["机器人系统","总体方案","SolidWorks","Python","智能感知"], projects:["rail","wall","coordination","ocr"]},
+    simulation: {title:"结构分析与机械可靠性验证",intro:"聚焦承载结构、伸出机构的受力分析及整机稳定性，在实际设备工况中开展 SolidWorks 静应力与防倾覆分析，服务于结构方案的验证和改进。",bullets:["完成最大伸出 1 m 取料机构的典型载荷工况分析","结合装卸工况开展机器人整机防倾覆评估","具备剪叉伸缩、取料机械手、俯仰升降等机构设计经历"],skills:["SolidWorks","静应力","载荷工况","整机稳定性","零部件选型"],projects:["rail","wall"]},
+    product: {title:"产品研发与项目落地全链路",intro:"理解从需求与总体方案到关键零件、加工采购、供应沟通和样机集成的工程链路。能够面向甲方需求推动设计迭代，并协调项目交付。",bullets:["主持铁路装卸机器人总体方案和核心机构设计","协调设计、零件采购、工厂沟通、BOM 更新及交付","结合现场约束优化产品结构与集成方案"],skills:["产品研发","机构设计","BOM","供应协同","样机交付"],projects:["rail","wall","ocr"]},
+    ai: {title:"AI 工具驱动的工程应用开发",intro:"面向实际业务，结合 AI 辅助开发、OCR、视觉分割与软件系统集成完成应用原型和业务流程闭环。关注技术可用性、运行结果与迭代反馈。",bullets:["独立搭建微信小程序前后端、数据库及云端链路","开展 OCR 铭牌字段定位、模板化解析与信息核验","使用 PyTorch / OpenCV 开展视觉模型训练与效果评估"],skills:["AI 辅助开发","Python","OCR","PyTorch","微信小程序"],projects:["ocr","vision","coordination"]}
+  },
+  projects: [
+    {id:"rail",num:"01",title:"铁路零担货物智能装卸机器人",org:"武汉西高电器有限公司",role:"项目负责人",category:["mechanics"],color:"",art:"rail",short:"机器人总体方案、剪叉伸缩机构与取料机械手设计，结合静应力和稳定性分析推进样机集成与交付。",tags:["机械机构","SolidWorks","样机集成"],background:"针对铁路零担货物装卸中的空间与取料工况，开展机器人总体方案、关键机构设计和整机工程实现。",duties:["主导总体方案与机械机构设计，承担关键零部件选型、整机集成与项目推进工作。","设计剪叉伸缩机构及核心取料机械手，考虑受限空间、作业动作和设备集成需求。","结合项目推进开展采购、工厂对接、BOM 整理和问题沟通。"],method:["利用 SolidWorks 对关键零件进行静应力分析，覆盖最大伸出 1 m 的取料机构载荷工况。","结合取料作业工况进行整机防倾覆评估，为结构与稳定性设计提供依据。"],outcome:"完成机器人样机集成与项目交付；结构分析覆盖 1 m 伸出工况。"},
+    {id:"wall",num:"02",title:"机动型建筑墙面砂浆喷抹一体机器人",org:"中国一冶集团有限公司",role:"项目研发",category:["mechanics"],color:"warm",art:"wall",short:"面向建筑墙面作业与运输空间约束，开展关键机构设计和俯仰升降结构开发。",tags:["机构设计","俯仰升降","工程约束"],background:"墙面砂浆喷抹机器人需要兼顾作业覆盖范围与非工作状态的运输空间约束。",duties:["负责机器人关键机构设计、方案验证和零部件选型。","针对非工作状态的空间问题设计俯仰升降机构。"],method:["围绕作业/运输姿态差异考虑机构布置与运动范围。","将机构动作、空间包络和工程装配条件纳入方案设计。"],outcome:"形成面向运输受限问题的俯仰升降机构方案，并参与项目工程研发。"},
+    {id:"coordination",num:"03",title:"多机器人任务分配与闭环优化",org:"科研项目 / 中国一冶集团有限公司",role:"科研项目",category:["algorithm"],color:"blue",art:"coord",short:"融合多源状态、能量感知和事件触发滚动重分配，在仿真中降低任务完成步数。",tags:["多机器人","任务分配","滚动优化"],background:"多机器人协同执行中，任务状态、设备状态和能量变化会影响初始分配结果，需要支持动态调整。",duties:["构建多源状态驱动的任务分配方法，设计初始分配和目标函数。","设计事件触发与滚动重分配逻辑，并完成仿真对照实验。"],method:["将状态信息与能量因素引入任务分配过程。","通过事件触发阈值控制重分配时机，在响应需求与计算开销之间取得平衡。"],outcome:"在所述仿真实验中，任务完成步数由 220 降至 197，减少约 10.45%。"},
+    {id:"ocr",num:"04",title:"物资智能验收系统",org:"国网北京市电力公司物资分公司",role:"独立开发",category:["application"],color:"",art:"ocr",short:"独立开发微信小程序前后端与云端业务链路，集成 OCR 铭牌核验、数据库匹配和位置判定。",tags:["OCR","微信小程序","数据库"],background:"物资现场验收需要对铭牌信息、物资数据和验收位置进行一致性核验，并完成数据记录与查询。",duties:["独立完成微信小程序前后端、数据库与云端业务链路开发。","集成铭牌识别、信息核验与电子围栏定位验收判定功能。"],method:["利用 OCR 文本检测框坐标实现铭牌字段定位和模板化解析。","处理动态字段，形成标准化模板，并与数据库记录进行匹配核验。"],outcome:"实现铭牌解析、业务核验、位置判定与数据管理的集成流程。"},
+    {id:"vision",num:"05",title:"农业无人拖拉机可通行区域分割",org:"视觉分割项目",role:"项目研发",category:["application"],color:"warm",art:"vision",short:"基于 PyTorch 与开源视觉分割模型，识别可通行区域并关注不同区域交界处的边界预测。",tags:["PyTorch","语义分割","效果评估"],background:"农业无人拖拉机在复杂田间场景下需要辨别可通行区域与不可通行区域，边界质量直接影响后续判断。",duties:["开展可通行与不可通行区域的视觉分割模型实验。","参与模型训练、参数调整、预测对比和评价数据整理。"],method:["使用 PyTorch 与开源视觉分割模型完成训练和推理。","围绕区域交界处的边界预测质量开展对比分析与迭代调整。"],outcome:"形成分割预测结果和实验评价数据；具体指标可在公开核验后补充。"}
+  ]
+};
+
+// 与资料区分开：以下属于交互功能，一般不需要修改。
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+const escapeHtml = (s)=>String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+let activeRole='all', activeFilter='all', selectedResume='all';
+function setRole(key){
+  const data=SITE_DATA.roles[key];if(!data)return;activeRole=key;
+  $$('.role-control').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.role===key)));
+  $('#role-title').textContent=data.title;$('#role-intro').textContent=data.intro;
+  $('#role-skills').replaceChildren(...data.skills.map(t=>{const s=document.createElement('span');s.textContent=t;return s}));
+  $('#role-bullets').replaceChildren(...data.bullets.map(t=>{const li=document.createElement('li');li.textContent=t;return li}));
+  // 切换角色只改变上方描述，不偷偷隐藏全部项目；保持用户明确控制筛选。
+}
+function artwork(type){
+  const head='<svg viewBox="0 0 470 180" role="img" aria-label="仅为项目类型概念示意，不是实物或仿真结果图" xmlns="http://www.w3.org/2000/svg">';
+  const stroke='stroke="#93d7d1" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"';
+  if(type==='rail')return head+`<g ${stroke}><rect x="85" y="112" width="300" height="24" rx="4"/><circle cx="122" cy="141" r="15"/><circle cx="348" cy="141" r="15"/><path d="M130 112L177 40L226 111L276 40L326 112"/><path d="M176 40H278M122 110L96 82H65M332 112L368 68L395 70"/><rect x="200" y="31" width="50" height="13" rx="3"/><path d="M266 51L300 50L331 72M331 72v24"/><path d="M326 91l-11 13m16-13l11 13"/></g><g fill="#bcf2ce"><circle cx="177" cy="40" r="5"/><circle cx="276" cy="40" r="5"/><circle cx="226" cy="111" r="5"/></g></svg>`;
+  if(type==='wall')return head+`<g ${stroke}><rect x="325" y="13" width="77" height="151" rx="3" stroke-dasharray="4 5"/><path d="M325 39h76M325 72h76M325 107h76M325 141h76" opacity=".45"/><path d="M45 147H322"/><rect x="73" y="112" width="152" height="27" rx="5"/><circle cx="101" cy="145" r="13"/><circle cx="207" cy="145" r="13"/><path d="M118 112L177 72L203 85L151 111M155 75L208 34L222 49L178 84M220 43L291 43V74L312 74"/><path d="M293 73l25 7M293 81l26 16"/><path d="M271 32V7M270 7h50"/></g><g fill="#ffd29f"><circle cx="177" cy="72" r="5"/><circle cx="215" cy="43" r="5"/></g></svg>`;
+  if(type==='coord')return head+`<g ${stroke}><path d="M75 39H388V152H75Z" opacity=".5" stroke-dasharray="5 7"/><path d="M118 66L204 115L315 63L370 117M118 66L370 117M204 115L315 63" stroke-dasharray="5 5" opacity=".7"/><circle cx="118" cy="66" r="22"/><circle cx="204" cy="115" r="22"/><circle cx="315" cy="63" r="22"/><circle cx="370" cy="117" r="15"/><path d="M112 66h12M118 60v12M198 115h12M204 109v12M309 63h12M315 57v12"/></g><g fill="#c2e8ff" font-family="monospace" font-size="12"><text x="108" y="34">R1</text><text x="193" y="153">R2</text><text x="305" y="30">R3</text></g></svg>`;
+  if(type==='ocr')return head+`<g ${stroke}><rect x="125" y="24" width="207" height="136" rx="9"/><path d="M143 45h70M143 62h30M191 62h45M143 102h161M143 116h161M143 130h125"/><rect x="177" y="54" width="104" height="37" rx="3" stroke="#b8edcc" stroke-dasharray="5 4"/><path d="M176 64h-11v17h11M281 64h11v17h-11"/><path d="M329 65h40M329 97h40" stroke-dasharray="4 6"/></g><text x="198" y="78" fill="#c5f6d6" font-family="monospace" font-size="14">ID_0384</text></svg>`;
+  return head+`<g ${stroke}><path d="M34 141Q81 99 128 126T228 112T322 129T443 102"/><path d="M34 141Q82 153 125 131T226 145T321 133T442 154" stroke="#dbbc8b"/><path d="M34 141Q75 120 109 113L158 144L210 97L272 138L334 113L391 135L441 105" stroke-dasharray="4 5"/><rect x="90" y="41" width="290" height="116" rx="8" stroke-dasharray="5 7" opacity=".56"/><path d="M203 85l27-23l29 23l-29 23z"/><path d="M230 62V35M259 85h34"/></g><text x="304" y="64" fill="#a5d6d1" font-family="monospace" font-size="11">AREA_A</text></svg>`;
+}
+function projectCard(p){
+  const article=document.createElement('article'); article.className='project'; article.dataset.category=p.category.join(' ');
+  article.innerHTML=`<div class="project-art ${escapeHtml(p.color)}"><span class="project-id">CASE / ${escapeHtml(p.num)}</span>${artwork(p.art)}</div><div class="project-info"><div class="project-role">${escapeHtml(p.role)} · ${escapeHtml(p.org)}</div><h3>${escapeHtml(p.title)}</h3><p class="project-desc">${escapeHtml(p.short)}</p><div class="tag-row">${p.tags.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div><button class="card-open" type="button" data-project="${escapeHtml(p.id)}" aria-label="查看${escapeHtml(p.title)}的技术过程">查看技术过程 <span aria-hidden="true" class="arrow">↗</span></button></div>`;
+  return article;
+}
+function renderProjects(){
+  const ps=SITE_DATA.projects.filter(p=>activeFilter==='all'||p.category.includes(activeFilter));
+  $('#project-grid').replaceChildren(...ps.map(projectCard));$('#project-count').textContent=`${String(ps.length).padStart(2,'0')} / PROJECTS`;
+  $$('.filter-button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===activeFilter)));
+}
+function openProject(id){const p=SITE_DATA.projects.find(p=>p.id===id);if(!p)return;
+  const block=(label,body)=>`<section class="detail-block"><h3>${label}</h3>${body}</section>`;
+  const list=arr=>`<ul>${arr.map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ul>`;
+  $('#project-dialog-content').innerHTML=`<div class="overline">CASE STUDY / ${escapeHtml(p.num)} · ${escapeHtml(p.role)}</div><h2 id="project-dialog-title">${escapeHtml(p.title)}</h2><p class="metadata">${escapeHtml(p.org)} · ${p.tags.map(escapeHtml).join(' / ')}</p>${block('项目背景',`<p>${escapeHtml(p.background)}</p>`)}${block('我的工作',list(p.duties))}${block('技术过程',list(p.method))}${block('结果与验证',`<p>${escapeHtml(p.outcome)}</p>`)}<p class="small-note">页面中的线条图仅为技术概念示意，不作为真实项目照片、仿真图或第三方证明材料。</p>`;
+  $('#project-dialog').showModal();
+}
+function makeResume(roleName){
+  const r=SITE_DATA.roles[roleName]||SITE_DATA.roles.all;
+  const order=r.projects.concat(SITE_DATA.projects.map(p=>p.id).filter(id=>!r.projects.includes(id)));
+  const selectProject=order.slice(0,roleName==='ai'?3:4).map(id=>SITE_DATA.projects.find(p=>p.id===id)).filter(Boolean);
+  const titles={all:'综合方向 · 机器人与算法',simulation:'结构仿真工程师',product:'产品研发工程师',ai:'AI 产品工程师'};
+  const cvProjects=selectProject.map(p=>`<div class="cv-item"><strong>${escapeHtml(p.title)}</strong><small>${escapeHtml(p.role)}｜${escapeHtml(p.org)}</small><ul><li>${escapeHtml(p.short)}</li><li>${escapeHtml(p.outcome)}</li></ul></div>`).join('');
+  let contact=`<span>GitHub: ${escapeHtml(SITE_DATA.person.github)}</span>`;
+  if(SITE_DATA.person.email)contact+=`<span>邮箱：${escapeHtml(SITE_DATA.person.email)}</span>`;
+  if(SITE_DATA.person.phone)contact+=`<span>电话：${escapeHtml(SITE_DATA.person.phone)}</span>`;
+  return `<article class="resume-sheet"><h2>${escapeHtml(SITE_DATA.person.name)}</h2><p class="cv-title">${escapeHtml(titles[roleName])} · GZH</p><div class="cv-info"><span>武汉科技大学 · 机械工程硕士（在读）</span>${contact}</div><h3>职业方向</h3><p class="cv-summary">${escapeHtml(r.intro)}</p><h3>关键技能</h3><div class="cv-skills">${r.skills.map(s=>`<span>${escapeHtml(s)}</span>`).join('')}</div><h3>项目经历</h3>${cvProjects}<h3>教育经历</h3><div class="cv-item"><strong>武汉科技大学 · 机械工程 · 硕士</strong><small>2024.09—2027.06（预计）</small></div><div class="cv-item"><strong>文华学院 · 机器人工程 · 本科</strong><small>2020.09—2024.06</small></div><h3>荣誉与能力</h3><ul><li>全国三维数字化创新设计大赛一等奖；连续两年获得一等学业奖学金。</li><li>英语 CET-6；跨机械、机器人系统与编程应用的工程实践经历。</li></ul></article>`;
+}
+function previewResume(){selectedResume=$('#resume-choice').value;$('#resume-dialog-content').innerHTML=makeResume(selectedResume);$('#resume-dialog').showModal()}
+function printResume(){
+  $('#print-area').innerHTML=makeResume(selectedResume);
+  // 使用单独打印容器确保打印的是简历而不是整个首页。
+  requestAnimationFrame(()=>window.print());
+}
+$$('.role-control').forEach((button,i,arr)=>{
+ button.addEventListener('click',()=>setRole(button.dataset.role));
+ button.addEventListener('keydown',e=>{let next=-1;if(e.key==='ArrowRight')next=(i+1)%arr.length;if(e.key==='ArrowLeft')next=(i-1+arr.length)%arr.length;if(e.key==='Home')next=0;if(e.key==='End')next=arr.length-1;if(next>=0){e.preventDefault();arr[next].focus();setRole(arr[next].dataset.role)}});
+});
+$$('.filter-button').forEach(b=>b.addEventListener('click',()=>{activeFilter=b.dataset.filter;renderProjects()}));
+$('#project-grid').addEventListener('click',e=>{const button=e.target.closest('[data-project]');if(button)openProject(button.dataset.project)});
+$$('[data-close]').forEach(b=>b.addEventListener('click',()=>$('#'+b.dataset.close).close()));
+$$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close()}));
+$('#resume-preview').addEventListener('click',previewResume);
+$('#print-resume').addEventListener('click',printResume);
+$('#current-year').textContent=new Date().getFullYear();
+$('#header-github').href=SITE_DATA.person.github;
+if(SITE_DATA.person.github)$('#contact-links').innerHTML=`<a class="contact-link" href="${escapeHtml(SITE_DATA.person.github)}" target="_blank" rel="noopener noreferrer">GitHub 主页 ↗</a>`;
+if(SITE_DATA.person.email){const a=document.createElement('a');a.className='contact-link';a.href='mailto:'+SITE_DATA.person.email;a.textContent='发送邮件 ↗';$('#contact-links').append(a)}
+setRole('all');renderProjects();
+</script>
+<noscript><div style="background:#1e3539;padding:18px;color:#fff;text-align:center">请启用浏览器 JavaScript 以查看项目筛选、技术详情与在线简历。</div></noscript>
 </body>
 </html>
