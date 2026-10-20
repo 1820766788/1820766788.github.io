@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GZH 个人作品集｜机械设计、机器人研发、结构仿真与 AI 产品">
+  <meta name="theme-color" content="#f6f7fb">
+  <title>GZH | 个人简历与项目作品集</title>
+  <style>
+    :root { --ink:#182b46; --muted:#627185; --brand:#2859aa; --accent:#e2a365; --line:#e4e9f0; --bg:#f6f7fb; --paper:#fff; --shadow:0 16px 40px rgba(32,52,85,.06); }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:3px solid #6a9aff;outline-offset:3px}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+    header{background:rgba(246,247,251,.94);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:18px}
+    .logo{font-weight:900;letter-spacing:.1em;font-size:22px;color:#153763}
+    .logo span{color:var(--accent)}
+    nav{display:flex;gap:28px;color:#41506a;font-size:14px}
+    nav a:hover{color:var(--brand)}
+    .toplink{font-size:14px;font-weight:700;padding:8px 14px;background:#e9effa;border-radius:8px;color:var(--brand)}
+    main{padding-bottom:80px}
+    .hero{display:grid;grid-template-columns:1.4fr .9fr;gap:55px;align-items:center;padding:92px 0 65px}
+    .eyebrow{display:inline-block;color:var(--brand);font-weight:750;letter-spacing:.09em;font-size:12px;text-transform:uppercase;margin-bottom:14px}
+    h1{font-size:clamp(40px,5.8vw,70px);line-height:1.12;letter-spacing:-.045em;margin:0 0 23px;font-weight:840}
+    h1 em{font-style:normal;color:var(--brand)}
+    .lead{max-width:620px;color:#52627a;font-size:18px;line-height:1.95}
+    .pills{display:flex;flex-wrap:wrap;gap:9px;margin:23px 0 30px}
+    .pill{font-size:13px;background:white;border:1px solid var(--line);padding:6px 12px;border-radius:100px;color:#4e6077}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-block;padding:12px 23px;background:var(--brand);border:1px solid var(--brand);color:white;border-radius:10px;font-weight:700;font-size:14px}
+    .btn.secondary{background:transparent;color:var(--brand)}
+    .portrait{background:linear-gradient(150deg,#142d51,#1b467b);border-radius:24px;min-height:365px;padding:32px;position:relative;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;color:white}
+    .portrait:after{content:"";width:270px;height:270px;position:absolute;right:-100px;top:-115px;border-radius:50%;border:55px solid rgba(255,255,255,.07)}
+    .portrait .mini{color:#a7c9e9;font-size:12px;font-weight:700;letter-spacing:.2em}
+    .portrait strong{font-size:76px;line-height:1;letter-spacing:-.08em}
+    .portrait p{margin:14px 0 0;color:#c7d9ed;max-width:280px;font-size:15px}
+    .stats{border-top:1px solid #557296;padding-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px;font-size:12px;color:#b9cfe8}
+    .stats b{display:block;color:white;font-size:17px;letter-spacing:-.02em}
+    section{scroll-margin-top:90px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:36px 0 22px}
+    h2{font-size:30px;letter-spacing:-.035em;margin:0}
+    .section-head p{margin:0;font-size:14px;color:var(--muted)}
+    .view{background:white;border:1px solid var(--line);padding:30px;border-radius:18px;box-shadow:var(--shadow)}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:27px}
+    .tab{font-family:inherit;cursor:pointer;border:1px solid #dde5ef;color:#556780;background:#f8fafc;padding:11px 18px;border-radius:9px;font-weight:700;font-size:14px;transition:.2s}
+    .tab:hover{border-color:#a0bce7}
+    .tab[aria-selected="true"]{background:var(--brand);color:white;border-color:var(--brand)}
+    .view-body{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
+    .view-body h3{font-size:24px;margin:0 0 10px}
+    .view-body p{color:var(--muted);margin:0 0 13px}
+    .view-body ul{margin:0;padding-left:19px;color:#475771}
+    .view-body li{margin:6px 0}
+    .aside{border-left:1px solid var(--line);padding-left:28px}
+    .kicker{font-size:12px;letter-spacing:.08em;color:var(--brand);font-weight:800;margin:0 0 9px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{background:#edf3fc;color:#28518a;padding:7px 12px;border-radius:7px;font-size:13px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{border:1px solid var(--line);background:white;border-radius:16px;padding:26px;box-shadow:var(--shadow);transition:transform .15s}
+    .card:hover{transform:translateY(-3px)}
+    .card .id{font-weight:800;color:#a8b7cd;font-size:12px;letter-spacing:.12em}
+    .card h3{font-size:20px;line-height:1.4;margin:16px 0 12px}
+    .card p{font-size:14px;color:var(--muted);margin:0 0 20px}
+    .card .tags{font-size:12px;font-weight:700;color:#3c69a5}
+    .about{border:1px solid var(--line);background:var(--paper);padding:30px;border-radius:16px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .about h3{font-size:20px;margin:0 0 11px}
+    .about p{color:var(--muted);margin:0}
+    .about a{font-weight:800;color:var(--brand);text-decoration:underline;text-underline-offset:4px}
+    .notice{color:#697991;font-size:13px;border-left:3px solid var(--accent);padding-left:12px;margin-top:18px}
+    footer{border-top:1px solid var(--line);padding:30px 0 50px;color:#8896a9;font-size:13px}
+    footer .wrap{display:flex;justify-content:space-between;gap:15px}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:30px;padding-top:54px}.portrait{min-height:260px}.cards{grid-template-columns:1fr 1fr}.view-body{grid-template-columns:1fr;gap:20px}.aside{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}}
+    @media(max-width:580px){.wrap{width:min(100% - 28px,1120px)}.nav{min-height:64px}.toplink{display:none}nav{gap:12px;font-size:12px}.hero{padding:44px 0 40px}h1{font-size:42px}.lead{font-size:16px}.portrait strong{font-size:61px}.view{padding:18px}.tab{flex:1 1 45%;padding:10px 7px}.cards,.about{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:6px}.card{padding:22px}footer .wrap{display:block}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#top" aria-label="GZH 首页">GZH<span>.</span></a>
+      <nav aria-label="站点导航">
+        <a href="#directions">求职方向</a><a href="#projects">项目经历</a><a href="#about">关于与联系</a>
+      </nav>
+      <a class="toplink" href="https://github.com/1820766788" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </header>
+  <main id="top" class="wrap">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Portfolio · Engineering × Robotics × AI</div>
+        <h1>你好，我是<br><em>GZH.</em></h1>
+        <p class="lead">关注机械设计与机器人系统研发，探索从机构设计、结构分析到算法应用与产品落地的完整工程链路。</p>
+        <div class="pills">
+          <span class="pill">机械设计</span><span class="pill">机器人研发</span><span class="pill">结构仿真</span><span class="pill">AI 辅助开发</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#directions">查看求职方向 ↓</a>
+          <a class="btn secondary" href="#projects">浏览项目</a>
+        </div>
+      </div>
+      <div class="portrait" aria-label="GZH 个人品牌展示">
+        <div class="mini">DESIGN • BUILD • IMPROVE</div>
+        <div><strong>GZH</strong><p>Engineering ideas into working systems.</p></div>
+        <div class="stats"><div><b>Mechanical</b>结构与机构设计</div><div><b>Intelligent</b>算法与智能系统</div></div>
+      </div>
+    </div>
+    <section id="directions">
+      <div class="section-head"><h2>一个人，四种职业视角</h2><p>点击切换不同岗位的展示重点</p></div>
+      <div class="view">
+        <div class="tabs" role="tablist" aria-label="求职方向">
+          <button class="tab" type="button" role="tab" data-view="all" aria-selected="true">综合介绍</button>
+          <button class="tab" type="button" role="tab" data-view="simulation" aria-selected="false">结构仿真</button>
+          <button class="tab" type="button" role="tab" data-view="product" aria-selected="false">产品研发</button>
+          <button class="tab" type="button" role="tab" data-view="ai" aria-selected="false">AI 产品</button>
+        </div>
+        <div class="view-body" role="tabpanel" id="view-panel" aria-live="polite">
+          <div><h3 id="view-title"></h3><p id="view-intro"></p><ul id="view-points"></ul></div>
+          <div class="aside"><div class="kicker">FOCUS AREAS / 能力关键词</div><div class="chips" id="view-chips"></div><p class="notice">各岗位的 PDF 简历下载入口将在核对版本后补充，避免误用旧版资料。</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="section-head"><h2>代表项目</h2><p>以下是项目概览，技术细节可继续补充</p></div>
+      <div class="cards">
+        <article class="card"><div class="id">PROJECT / 01</div><h3>铁路零担货物智能装卸机器人</h3><p>围绕装卸作业场景，开展机器人总体方案、机构设计与整机集成相关工作。</p><div class="tags">机构设计 · 系统集成 · 稳定性分析</div></article>
+        <article class="card"><div class="id">PROJECT / 02</div><h3>机动型建筑墙面砂浆喷抹一体机器人</h3><p>聚焦建筑墙面作业中的机构布置、功能集成及机器人运动与作业能力。</p><div class="tags">机器人研发 · 结构设计 · 工程应用</div></article>
+        <article class="card"><div class="id">PROJECT / 03</div><h3>多机器人协同与任务规划</h3><p>关注多机器人任务分配、协同优化和闭环执行，探索算法与实际系统的结合。</p><div class="tags">任务分配 · 协同规划 · 算法应用</div></article>
+      </div>
+    </section>
+    <section id="about">
+      <div class="section-head"><h2>关于我</h2><p>设计思维与工程实践并重</p></div>
+      <div class="about">
+        <div><h3>教育与研究</h3><p>武汉科技大学 · 机械工程相关研究方向。关注机器人系统、机械设计与算法应用的结合。</p></div>
+        <div><h3>联系与进一步了解</h3><p>项目及简历内容正在逐步完善。你可以先查看我的 <a href="https://github.com/1820766788" target="_blank" rel="noopener">GitHub 主页 ↗</a>。邮箱、电话等信息在本人确认后再公开。</p></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>© <span id="year"></span> GZH · 个人作品集</span><span>Designed for GitHub Pages · 静态网站</span></div></footer>
+  <script>
+    // 后续更换简介和技能，只需要修改下方数据。
+    const VIEWS = {
+      all: {title:"机械设计 × 机器人 × 智能应用",intro:"从方案构思到工程落地，关注结构、控制和算法之间的协同。",points:["机器人总体设计与关键机构研发","结构分析、方案验证及工程实现","多机器人协同与智能感知相关探索"],chips:["机器人系统","SolidWorks","方案设计","工程集成","协同规划"]},
+      simulation: {title:"结构仿真与机械设计",intro:"以结构可靠性、受力分析和可制造性为核心，支持产品迭代与方案验证。",points:["关键机构设计与零部件选型","静应力分析与典型载荷工况验证","整机稳定性与防倾覆分析"],chips:["结构设计","静应力分析","载荷工况","防倾覆","零件选型"]},
+      product: {title:"产品研发与工程落地",intro:"关注客户需求、总体方案、供应协同、样机交付之间的全过程闭环。",points:["产品方案设计、机构选型与集成","采购及制造过程中的沟通协同","样机验证、问题跟踪与优化改进"],chips:["产品研发","项目协同","BOM","供应商沟通","样机交付"]},
+      ai: {title:"AI 产品与工程应用",intro:"利用 AI 辅助开发和智能感知技术，推动工程问题转化为可用产品。",points:["将 AI 工具应用于编程与工程任务","关注 OCR、视觉感知及软件系统集成","结合机器人应用场景进行产品化思考"],chips:["AI 辅助开发","OCR","视觉感知","需求分析","原型验证"]}
+    };
+    const tabs = [...document.querySelectorAll(".tab")];
+    function showView(name) {
+      const view=VIEWS[name] || VIEWS.all;
+      document.getElementById("view-title").textContent=view.title;
+      document.getElementById("view-intro").textContent=view.intro;
+      const list=document.getElementById("view-points"); list.replaceChildren();
+      view.points.forEach(s=>{const li=document.createElement("li");li.textContent=s;list.append(li);});
+      const chips=document.getElementById("view-chips");chips.replaceChildren();
+      view.chips.forEach(s=>{const span=document.createElement("span");span.className="chip";span.textContent=s;chips.append(span);});
+      tabs.forEach(tab=>tab.setAttribute("aria-selected",String(tab.dataset.view===name)));
+    }
+    tabs.forEach((tab,i)=>{
+      tab.addEventListener("click",()=>showView(tab.dataset.view));
+      tab.addEventListener("keydown",e=>{
+        let next=null;
+        if(e.key==="ArrowRight")next=(i+1)%tabs.length;
+        if(e.key==="ArrowLeft")next=(i-1+tabs.length)%tabs.length;
+        if(e.key==="Home")next=0;
+        if(e.key==="End")next=tabs.length-1;
+        if(next!==null){e.preventDefault();tabs[next].focus();showView(tabs[next].dataset.view);}
+      });
+    });
+    document.getElementById("year").textContent=new Date().getFullYear();
+    showView("all");
+  </script>
+</body>
+</html>
